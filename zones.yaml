@@ -1,0 +1,21 @@
+- name: Home
+  latitude: !secret home_lat
+  longitude: !secret home_lon
+  radius: 50
+  icon: mdi:home
+
+- name: Work
+  latitude: !secret work_lat
+  longitude: !secret work_lon
+  radius: 250
+  icon: mdi:account-multiple
+
+- name: HEB
+  latitude: 29.71343
+  longitude: -98.1600
+  radius: 150
+
+# - name: WalMart
+#   latitude: 29.5
+#   longitude: -98.0
+#   radius: 50

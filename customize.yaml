@@ -1,0 +1,63 @@
+device_tracker.nexus6p:
+  friendly_name: nexus6p
+switch.tplink:
+  icon: mdi:lamp
+sensor.coinbase_bch_wallet: {}
+sensor.coinbase_ltc_wallet:
+  hidden: false
+sensor.coinbase_ltc_vault:
+  hidden: true
+sensor.usd_exchange_rate:
+  hidden: true
+  icon: mdi:cash
+weblink.homeassistantio:
+  icon: mdi:link
+weblink.remote_home_router:
+  icon: mdi:network
+sensor.coinbase_usd_wallet:
+  icon: mdi:cash
+sensor.coinbase_btc_wallet:
+  hidden: true
+sun.sun:
+  icon: mdi:cloud
+weblink.nodemcu:
+  icon: mdi:help
+group.all_devices:
+  entity_id:
+  - device_tracker.nexus6p
+  - binary_sensor.pin3
+  view: 'false'
+group.all_switches:
+  entity_id:
+  - switch.pin18
+  - switch.tplink
+  - switch.remote_1
+  - switch.remote_2
+  - switch.remote_3
+  friendly_name: Hook Switches
+  homebridge_name: Switches
+  icon: mdi:lightbulb
+  view: 'false'
+automation.homeassistant_notification:
+  icon: mdi:home
+  initial_state: 'off'
+automation.dexie_notification:
+  icon: mdi:cat
+  initial_state: 'on'
+automation.zone_notification:
+  icon: mdi:car
+  initial_state: 'off'
+switch.kitchen_lights:
+  icon: mdi:food
+switch.spare_bedroom:
+  icon: mdi:sleep
+switch.shelf_light:
+  icon: mdi:lamp
+binary_sensor.pin3:
+  device_class: motion
+  friendly_name: IR Sensor
+automation.ir_motion:
+  initial_state: 'off'
+alarm_control_panel.ha_alarm:
+  icon: mdi:security
+group.all_automations: {}
