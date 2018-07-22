@@ -1,9 +1,8 @@
-
 Nexus6P:
   hide_if_away: false
   icon: mdi:android
   mac:
   name: nexus6p
-  picture:
+  picture: mdi:android
   track: true
   vendor: Huwaei

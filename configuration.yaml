@@ -9,11 +9,9 @@ homeassistant:
   customize: !include customize.yaml
 
 config:
-
 hassio:
-
 automation: !include automations.yaml
-
+discovery:
 http:
   api_password: !secret http_password
   base_url: http://dhahaj.duckdns.org:8123/
@@ -22,26 +20,17 @@ http:
 recorder:
   purge_keep_days: 2
 
-# sensor:
-#   - platform: pi_hole
-
-# wemo:
-#   static:
-#     - 192.168.0.38
-#discovery:
-# shopping_list:
-
 updater:
   include_used_components: true
 
 history:
-
+sun:
+map:
+zone: !include zones.yaml
 logger:
   default: error
-  logs:
-    homeassistant.components.switch.hook: debug
-
-# logbook: !include logbook.yaml
+  # logs:
+  #   homeassistant.components.switch.hook: debug
 
 frontend:
   themes:
@@ -65,10 +54,6 @@ coinbase:
     - ETH
     - LTC
 
-sun:
-map:
-zone: !include zones.yaml
-
 device_tracker:
   - platform: gpslogger
     icon: mdi:android
@@ -80,42 +65,34 @@ panel_iframe:
     icon: mdi:code-braces
     url: http://dhahaj.duckdns.org:8321
     # url: http://192.168.0.194:8321
-  sincos:
-    title: SinCos
-    icon: mdi:buddhism
-    url: https://www.openprocessing.org/sketch/544500#
+
+  # sincos:
+  #   title: SinCos
+  #   icon: mdi:buddhism
+  #   url: https://www.openprocessing.org/sketch/544500#
+    
   router_remote:
-    title: TP-Link
+    title: TPLINK
     icon: mdi:access-point-network
     url: http://dhahaj.duckdns.org:9090
+    # url: http://192.168.1.1
+
   tasmoadmin:
-    title: Sonoff
+    title: TasoAdmin
     icon: mdi:lightbulb-on
-    url: http://192.168.0.194:9541
-    # url: http://dhahaj.duckdns.org:9541
-  # grafana:
-  #   title: Grafana
-  #   icon: mdi:chart-timeline
-  #   url: http://dhahaj.duckdns.org:3000
-  # influxdb:
-  #   title: InFluxDB
-  #   url: http://dhahaj.duckdns.org:8887
-  # pihole:
-  #   title: Pi-hole
-  #   icon: mdi:block-helper
-  #   url: http://192.168.0.194/admin/index.php
+    # url: http://192.168.0.194:9541
+    url: http://dhahaj.duckdns.org:9541
 
-discovery:
-  # enable:
-  #   - belkin_wemo
-  #   - philips_hue
-  #   - plex_mediaserver
-  #   - samsung_tv
-  #   - sonos
-
-# media_player:
-#   - platform: gpmdp
-#     host: 192.168.1.1
+  sonoff_server:
+    title: Sonoff Switch Web Server
+    icon: mdi:lightbulb-on
+    url: http://dhahaj.duckdns.org:6789
+    # url: http://192.168.0.50
+    
+  magicled_server:
+    title: MagicLED Controller
+    icon: mdi:lightbulb-on
+    url: http://dhahaj.duckdns.org:6790
 
 notify:
   - platform: pushbullet
@@ -124,46 +101,95 @@ notify:
 
 switch: 
   - platform: tplink
-    host: 192.168.0.189
     name: HS100
- # - platform: hook
+    host: 192.168.0.189
+  #- platform: hook
   #  name: Hook
-#    token: !secret hook_token
-  - platform: rpi_gpio
-    name: Pin18
-    ports:
-      18: pin18
- # - platform: mqtt
- #   name: "Sonoff power"
-#    state_topic: "stat/sonoff/POWER"
- #   command_topic: "cmnd/sonoff/POWER"
- #   availability_topic: "tele/sonoff/LWT"
- #   qos: 1
- #   payload_on: "ON"
- #   payload_off: "OFF"
-  #  payload_available: "Online"
-  #  payload_not_available: "Offline"
- #   retain: false
+  #  token: !secret hook_token
+  # - platform: rpi_gpio
+  #   name: Pin18
+  #   ports:
+  #     18: pin18
+  # - platform: mqtt
+  #   name: "Sonoff power"
+  #   state_topic: "stat/sonoff/POWER"
+  #   command_topic: "cmnd/sonoff/POWER"
+  #   availability_topic: "tele/sonoff/LWT"
+  #   qos: 1
+  #   payload_on: "ON"
+  #   payload_off: "OFF"
+  #   payload_available: "Online"
+  #   payload_not_available: "Offline"
+  #   retain: false
 
-binary_sensor:
-  - platform: rpi_gpio
-    pull_mode: DOWN
-   # invert_logic: false
-    ports:
-     3: pin3
-    
 weblink:
   entities:
-    - name: Remote Home Router
-      url: https://75.1.37.24:21747/
+    # - name: Remote Home Router
+    #   url: https://75.1.37.24:21747/
     - name: HomeAssistant.io
       url: https://home-assistant.io
     - name: NodeMCU
       url: http://dhahaj.duckdns.org:7777/
     - name: Archer-C9
       url: http://dhahaj.duckdns.org:9090/
-    # - name: IDE
-    #   url: http://dhahaj.duckdns.org/ide.html
+    - name: GitHub
+      url: https://github.com/dhahaj/
+    - name: IDE
+      url: http://dhahaj.duckdns.org:8321/
+      # url: http://dhahaj.duckdns.org/ide.html
+
+ifttt:
+  key: R178iw5EM37FvKJGW449f
+
+wemo:
+ # static:
+  #  - 192.168.1.50
+
+# grafana:
+#   title: Grafana
+#   icon: mdi:chart-timeline
+#   url: http://dhahaj.duckdns.org:3000
+# influxdb:
+#   title: InFluxDB
+#   url: http://dhahaj.duckdns.org:8887
+# pihole:
+#   title: Pi-hole
+#   icon: mdi:block-helper
+#   url: http://192.168.0.194/admin/index.php
+
+#mqtt:
+#  discovery: true
+  # discovery_prefix: homeassistant
+  # host: localhost
+  # # broker: domus1
+ # port: 1883
+  # client_id: home-assistant
+  # keepalive: 60
+  # username: hass
+  # password: !secret http_password
+  # protocol: 3.1.1
+  # birth_message:
+  #   topic: "tele/hass/LWT"
+  #   payload: "Online"
+  #   qos: 1
+  #   retain: true
+  # will_message:
+  #   topic: "tele/hass1/LWT"
+  #   payload: "Offline"
+  #   qos: 1
+  #   retain: true
+    
+
+# media_player:
+#   - platform: gpmdp
+#     host: 192.168.1.1
+
+# binary_sensor:
+#   - platform: rpi_gpio
+#     pull_mode: DOWN
+   # invert_logic: false
+    # ports:
+    # 3: pin3
 
 #alarm_control_panel:
 #  - platform: manual_mqtt
@@ -189,36 +215,13 @@ weblink:
 #       title: Wow hello!
 
 #mqtt:
- # discovery: true
- # discovery_prefix: homeassistant
-  # host: localhost
-  # broker: domus1
-  # port: 1883
-  # client_id: home-assistant-1
-  # keepalive: 60
-  # username: homeassistant
-  # password: !secret http_password
-  # protocol: 3.1.1
-  # birth_message:
-  #   topic: "tele/hass1/LWT"
-  #   payload: "Online"
-  #   qos: 1
-  #   retain: true
-  # will_message:
-  #   topic: "tele/hass1/LWT"
-  #   payload: "Offline"
-  #   qos: 1
-  #   retain: true
-    
-
-#mqtt:
 #  broker: core-mosquitto
 #  username: !secret mqtt_username
 #  password: !secret mqtt_password
 
 # mqtt:
-  # broker: 192.168.0.104
-  # client_id: 123456789
+#   broker: 192.168.0.104
+#   client_id: 123456789
   
 # camera:
 #   - platform: rpi_camera
@@ -226,9 +229,9 @@ weblink:
 #     vertical_flip: 1
 #     horizontal_flip: 1
 #     image_quality: 5
-    #file_path: /tmp/camera.jpg
-    #  - platform: usps
-    #scan_interval: 10
+#    file_path: /tmp/camera.jpg
+#      - platform: usps
+#    scan_interval: 10
 
 # panel_iframe:
 #   configurator:
@@ -243,20 +246,7 @@ weblink:
 # username: !secret usps_username
 #  password: !secret usps_password
 
-      #android_ip_webcam:
-      #  - host: 192.168.0.166
-      #    port: 8080
-      #    name: AndroidWebCam
-      #    scan_interval: 10
-      #    sensors:
-      #      - audio_connections
-      #      - battery_level
-      #      - motion
-      #    switches:
-      #      - focus
-      #      - night_vision
-      #      - overlay
-      #      - torch
-      #      - video_recording
-    # motion_sensor:
-
+# sensor:
+#   - platform: pi_hole
+# shopping_list:
+# logbook: !include logbook.yaml

@@ -1,0 +1,21 @@
+{
+    "data": {
+        "entries": [
+            {
+                "data": {
+                    "latitude": 29.68292245,
+                    "longitude": -98.12749029,
+                    "name": "Wally World",
+                    "radius": 25.0
+                },
+                "domain": "zone",
+                "entry_id": "2555eca9b37d492288d9f2f1c1949959",
+                "source": "user",
+                "title": "Wally World",
+                "version": 1
+            }
+        ]
+    },
+    "key": "core.config_entries",
+    "version": 1
+}

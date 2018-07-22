@@ -1,0 +1,20 @@
+switch.sonoff:
+  config_entry_id: switch.sonoff
+  name: Bedroom Lamp
+  platform: wemo
+  unique_id: 201612K008AAD47
+switch.magichomeled:
+  config_entry_id: switch.magichomeled
+  name: MagicLED
+  platform: wemo
+  unique_id: 201612K008D43C6
+media_player.roku_yu00mv803147:
+  config_entry_id:
+  name: Roku
+  platform: roku
+  unique_id: YU00MV803147
+switch.nodemcu:
+  config_entry_id:
+  name:
+  platform: wemo
+  unique_id: 201612K00DF115D

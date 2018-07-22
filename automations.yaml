@@ -23,7 +23,6 @@
     event: leave
     platform: zone
     zone: zone.work
-
 - action:
   - data:
       message: HomeAssistant Started
@@ -35,7 +34,6 @@
   trigger:
   - event: start
     platform: homeassistant
-
 - action:
   - data:
       message: Time to give Dexie her insulin shot.
@@ -49,7 +47,6 @@
     platform: time
   - at: '19:30'
     platform: time
-
 - id: '1526082360186'
   alias: IR Motion
   trigger:
@@ -65,7 +62,6 @@
   - data:
       entity_id: switch.pin18
     service: switch.toggle
-
 - action:
   - data:
       message: Coinbase wallet change!
@@ -84,25 +80,50 @@
     entity_id: sensor.coinbase_eth_wallet
     platform: numeric_state
   condition: []
-
-- alias: "Power state on HA start-up"
+- alias: Power state on HA start-up
   trigger:
     platform: homeassistant
     event: start
   action:
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/power1"
-        payload: ""
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/power2"
-        payload: ""
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/Power3"
-        payload: "" 
-    - service: mqtt.publish
-      data:
-        topic: "cmnd/sonoffs/power4"
-        payload: ""
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/power1
+      payload: ''
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/power2
+      payload: ''
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/Power3
+      payload: ''
+  - service: mqtt.publish
+    data:
+      topic: cmnd/sonoffs/power4
+      payload: ''
+  id: 664c50ca2ec64ff9ba9b1a77eca098e2
+- id: '1531398651929'
+  alias: Sonoff
+  trigger:
+  - entity_id: switch.sonoff
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: switch.sonoff
+    from: 'on'
+    platform: state
+    to: 'off'
+  - entity_id: switch.nodemcu
+    from: 'off'
+    platform: state
+    to: 'on'
+  - entity_id: switch.nodemcu
+    from: 'on'
+    platform: state
+    to: 'off'
+  condition: []
+  action:
+  - data:
+      message: toggled
+      title: sonoff
+    service: notify.pb
