@@ -1,0 +1,10 @@
+#!/bin/bash
+sudo apt-get && sudo apt-get updgrade -y
+
+echo program_usb_boot_mode=1 | sudo tee -a /boot/config.txt
+
+
+echo "This should be equal to 0x3020000a!"
+
+vcgencmd otp_dump | grep 17:
+

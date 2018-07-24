@@ -1,7 +1,4 @@
-device_tracker.nexus6p:
-  entity_picture: mdi:help
-  friendly_name: nexus6
-  icon: mdi:help
+device_tracker.nexus6p: {}
 switch.tplink:
   icon: mdi:lamp
 sensor.coinbase_bch_wallet:
@@ -36,7 +33,7 @@ group.all_devices:
   view: 'false'
 group.all_switches:
   entity_id:
-  - device_tracke.nexus6p
+  - device_tracker.nexus6p
   - switch.tplink
   - switch.sonoff
   - switch.hs100
