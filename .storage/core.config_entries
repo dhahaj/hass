@@ -13,6 +13,14 @@
                 "source": "user",
                 "title": "Wally World",
                 "version": 1
+            },
+            {
+                "data": {},
+                "domain": "cast",
+                "entry_id": "2e034a418fe74523912dac18514a1ea1",
+                "source": "discovery",
+                "title": "Google Cast",
+                "version": 1
             }
         ]
     },

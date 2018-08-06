@@ -10,7 +10,7 @@ switch.magichomeled:
   unique_id: 201612K008D43C6
 media_player.roku_yu00mv803147:
   config_entry_id:
-  name: Roku
+  name: Anne's Roku
   platform: roku
   unique_id: YU00MV803147
 switch.nodemcu:
@@ -18,3 +18,8 @@ switch.nodemcu:
   name:
   platform: wemo
   unique_id: 201612K00DF115D
+media_player.living_room_tv:
+  config_entry_id: 2e034a418fe74523912dac18514a1ea1
+  name: Daniel's Chromecast
+  platform: cast
+  unique_id: 65dd19a3-113d-16de-fae3-945fe89cd718
